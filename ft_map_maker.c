@@ -6,7 +6,7 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:00:19 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/01/28 11:42:24 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 14:30:54 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_map_maker()
 	int		i;
 
 	i = 0;
-	fd = open("./map.ber", O_RDONLY);
+	fd = open("./map2.ber", O_RDONLY);
 	lines = line_ct();
 	map = malloc((lines + 1) * sizeof(char **));
 	if (!map)

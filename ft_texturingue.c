@@ -6,7 +6,7 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 14:05:06 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/02/01 11:08:53 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 15:02:00 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void	ft_wall_set_up(char **map, t_prg *prg, int i, int j)
 			else if (j == ft_strlen(map[i]) - 2 && map[i][j - 1] != '1')
 				mlx_put_image_to_window(prg->mlx, prg->win.win, prg->wlE.i_ref,
 						co.x, co.y);
-			else if (i != 0 && i == prg->win.hgt - 1 &&  map[i - 1][j] != '1' && map[i][j] == '1' )
+			else if (i != 0 && i == prg->win.hgt - 1 && map[i][j] == '1' )
 				mlx_put_image_to_window(prg->mlx, prg->win.win, prg->rdS.i_ref,
 						co.x, co.y);
-			else if (i == 0 && map[i][j] == '1' && map[i + 1] && map[i + 1][j] != '1')
+			else if (i == 0 && map[i][j] == '1' && map[i + 1] )
 				mlx_put_image_to_window(prg->mlx, prg->win.win, prg->rdN.i_ref,
 						co.x, co.y);
 			ft_scotch(&j, &co.x);	
@@ -109,7 +109,7 @@ void	ft_corner_set_up(char **map, t_prg *prg, int i, int j)
 			else if (i == 0 && j == ft_strlen(map[i]) - 2)
 				mlx_put_image_to_window(prg->mlx, prg->win.win, prg->cNE.i_ref,
 						co.x, co.y);
-			else if (i == prg->win.hgt - 1 && j > 1 && map[i - 1][j] == '1' && map[i][j - 1] == '1')
+			else if (i == prg->win.hgt - 1 && j == prg->win.wid - 1)
 				mlx_put_image_to_window(prg->mlx, prg->win.win, prg->cSE.i_ref,
 						co.x, co.y);
 			else if (i > 0 && j == 0 && map[i - 1][j] == '1' && map[i][j + 1] == '1')

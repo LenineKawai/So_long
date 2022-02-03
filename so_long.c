@@ -6,7 +6,7 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:53:22 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/02/01 14:32:18 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 16:55:35 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	ft_cross_exit(t_prg *prg)
 
 int	ft_move(int keycode, t_prg *prg)
 {	
-	int x;
-	int y;
+	int				x;
+	int				y;
+	static int	steps;
 
 	x = prg->per.coo.x / 64;
 	y = prg->per.coo.y / 64;
@@ -43,25 +44,43 @@ int	ft_move(int keycode, t_prg *prg)
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 13 && prg->map[y - 1][x] != '1')
-		ft_mv_up(prg, x, y);
+		ft_mv_up(prg, x, y, &steps);
 	if (keycode == 0 && prg->map[y][x - 1] != '1')
-		ft_mv_lft(prg, x, y);
+		ft_mv_lft(prg, x, y, &steps);
 	if (keycode == 1 && prg->map[y + 1][x] != '1')
-		ft_mv_dwn(prg, x, y);
+		ft_mv_dwn(prg, x, y, &steps);
 	if (keycode == 2 && prg->map[y][x + 1] != '1')
-		ft_mv_rgt(prg, x, y);
+		ft_mv_rgt(prg, x, y, &steps);
 	if (prg->col_nb == 0)
 		prg->lock = 0;
-	prg->anim ++;
+	printf("Crossed Roads = %d\n", steps);
 	return (0);
 }
 
 int ft_anim(t_prg *prg)
 {
+	int	x;
+	int	y;
+
+	if (prg->game_over == 1)
+	{
+		sleep (2);
+		exit(0);
+	}
+	x = prg->per.coo.x / 64;
+	y = prg->per.coo.y / 64;
 	ft_anim_merguez(prg);
 	ft_anim_exit(prg);
 	ft_anim_col(prg);
-	ft_anim_belzeguin
+	ft_move_ennemy(prg);
+	ft_anim_ennemy(prg);
+	if (prg->map[y][x] == 'A')
+	{
+		mlx_clear_window(prg->mlx, prg->win.win);
+		mlx_put_image_to_window(prg->mlx, prg->win.win, prg->los.i_ref,
+			(prg->win.wid) * 64 / 2 - 240, (prg->win.hgt) * 64 / 2 - 240);
+		prg->game_over = 1;
+	}
 	return (0);
 }
 
@@ -74,7 +93,9 @@ int main ()
 	i = 0;
 	j = 0;
 	t_prg	prg;
+	prg.game_over = 0;
 	prg.lock = 1;
+	prg.en_stat = 0;
 	prg.anim_baby = 0;
 	ft_init(&prg.anim, &prg.anim_e);
 	ft_init(&prg.anim_stat, &prg.anim_stat_e);
@@ -91,4 +112,5 @@ int main ()
 	mlx_hook(prg.win.win, 2, 0, ft_move, &prg);
 	mlx_hook(prg.win.win, 17, 0, ft_cross_exit, &prg);
 	mlx_loop(prg.mlx);
+	exit (0);
 }

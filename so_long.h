@@ -6,14 +6,14 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:48:10 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/02/01 14:25:25 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 17:00:13 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "minilibx_opengl_20191021/mlx.h"
-# include "get_next_line/get_next_line.h"
+# include "get_n_line/get_next_line.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -44,6 +44,11 @@
 # define PIR "./xpm/ping_idle_right.xpm" 
 # define ACGT "./xpm/CGT_shaking_merguez.xpm"
 # define A2CGT "./xpm/CGT_mid_shaking.xpm"
+# define BB1 "./xpm/black_bloc.xpm"
+# define BBR "./xpm/black_bloc_reversed.xpm"
+# define BB2 "./xpm/black_bloc_shake_left.xpm"
+# define BB3 "./xpm/black_bloc_shake_right.xpm"
+# define L "./xpm/loose.xpm"
 
 typedef struct	s_coo
 {
@@ -100,15 +105,25 @@ typedef struct	s_prg
 	t_img		extA;
 	t_img		cga;
 	t_img		cga2;
+	t_img		blkr;
+	t_img		blk1;
+	t_img		blk2;
+	t_img		blk3;
 	t_char		per;
+	t_img		los;
 	int			anim;
 	int			anim_e;
+	int			anim_a;
+	int			anim_en_an;
 	int			anim_baby;
 	int			anim_stat;
 	int			anim_stat_e;
+	int			anim_stat_a;
 	int			anim_stat_baby;
+	int			en_stat;
 	int			col_nb;
 	int			lock;
+	int			game_over;
 }				t_prg;
 
 int			line_ct();
@@ -119,17 +134,19 @@ char		**ft_map_maker();
 void		ft_free_char(char **ptr);
 void		ft_walls_checker(char **map, int map_width, int map_height);
 void		ft_check_amount(char **map, t_prg *prg);
-void		ft_mv_up(t_prg *prg, int x, int y);
-void		ft_mv_dwn(t_prg *prg, int x, int y);
-void		ft_mv_rgt(t_prg *prg, int x, int y);
-void		ft_mv_lft(t_prg *prg, int x, int y);
+void		ft_mv_up(t_prg *prg, int x, int y, int *steps);
+void		ft_mv_dwn(t_prg *prg, int x, int y, int *steps);
+void		ft_mv_rgt(t_prg *prg, int x, int y, int *steps);
+void		ft_mv_lft(t_prg *prg, int x, int y, int *steps);
 void		ft_pce(t_coo *coo, t_prg *prg, char c);
 void		ft_wall_set_up(char **map, t_prg *prg, int i, int j);
 void		ft_corner_set_up(char **map, t_prg *prg, int i, int j);
 void		ft_middle_set_up(char **map, t_prg *prg, int i, int j);
+void		ft_move_ennemy(t_prg *prg);
 void		ft_anim_merguez(t_prg *prg);
 void		ft_anim_exit(t_prg *prg);
 void		ft_anim_col(t_prg *prg);
+void		ft_anim_ennemy(t_prg *prg);
 void		ft_texture_set_up(t_prg *prg);
 void		ft_anim_set_up(t_prg *prg);
 void		ft_init(int *b, int *c);

@@ -6,13 +6,13 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:47:14 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/01/31 16:45:54 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 14:09:43 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_mv_up(t_prg *prg, int x, int y)
+void	ft_mv_up(t_prg *prg, int x, int y, int *steps)
 {
 	prg->per.coo.y -= 64;
 		if (prg->anim != 0 && prg->anim % 2 == 0)
@@ -29,11 +29,12 @@ void	ft_mv_up(t_prg *prg, int x, int y)
 		if (prg->map[y][x] == 'C')
 		{
 			prg->col_nb --;
-			prg->map[y][x] = 0;
+			prg->map[y][x] = '0';
 		}
+	*steps += 1;
 }
 
-void	ft_mv_lft(t_prg *prg, int x, int y)
+void	ft_mv_lft(t_prg *prg, int x, int y, int *steps)
 {
 	prg->per.coo.x -= 64;
 		if (prg->anim != 0 && prg->anim % 2 == 0)
@@ -50,11 +51,12 @@ void	ft_mv_lft(t_prg *prg, int x, int y)
 		if (prg->map[y][x] == 'C')
 		{
 			prg->col_nb --;
-			prg->map[y][x] = 0;
+			prg->map[y][x] = '0';
 		}
+	*steps += 1;
 }
 
-void	ft_mv_dwn(t_prg *prg, int x, int y)
+void	ft_mv_dwn(t_prg *prg, int x, int y, int *steps)
 {
 	prg->per.coo.y += 64;
 		if (prg->anim != 0 && prg->anim % 2 == 0)
@@ -71,11 +73,12 @@ void	ft_mv_dwn(t_prg *prg, int x, int y)
 		if (prg->map[y][x] == 'C')
 		{
 			prg->col_nb --;
-			prg->map[y][x] = 0;
+			prg->map[y][x] = '0';
 		}
+	*steps += 1;
 }
 
-void	ft_mv_rgt(t_prg *prg, int x, int y)
+void	ft_mv_rgt(t_prg *prg, int x, int y, int *steps)
 {
 		prg->per.coo.x += 64;
 		if (prg->anim != 0 && prg->anim % 2 == 0)
@@ -92,6 +95,7 @@ void	ft_mv_rgt(t_prg *prg, int x, int y)
 		if (prg->map[y][x] == 'C')
 		{
 			prg->col_nb --;
-			prg->map[y][x] = 0;
+			prg->map[y][x] = '0';
 		}
+	*steps += 1;
 }

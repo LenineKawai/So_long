@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_ct.c                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 11:30:29 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/02/03 17:00:35 by mgolinva         ###   ########lyon.fr   */
+/*   Created: 2021/11/23 11:31:49 by mgolinva          #+#    #+#             */
+/*   Updated: 2022/01/26 10:19:19 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx_opengl_20191021/mlx.h"
-#include "so_long.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# define BUFFER_SIZE 10
 
-int line_ct()
-{
-	int fd;
-	int ct;
-	char nl[BUFFER_SIZE];
+int		ft_strlen(const char *str);
+char	*get_next_line(int fd);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *str1, char const *str2);
+char	*ft_strchr(const char *str, int c);
 
-	ct = 0;
-	fd = open("./map.ber", O_RDONLY);
-	while (read(fd, nl, BUFFER_SIZE) != 0)
-	{
-		if (ft_strchr(nl, '\n') != NULL)
-			ct ++;
-	}
-	close (fd);
-	return (ct);
-}
+#endif

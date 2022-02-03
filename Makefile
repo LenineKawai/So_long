@@ -6,13 +6,13 @@
 #    By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/28 09:58:31 by mgolinva          #+#    #+#              #
-#    Updated: 2022/02/01 14:26:02 by mgolinva         ###   ########lyon.fr    #
+#    Updated: 2022/02/03 16:59:47 by mgolinva         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = baby_anim.c exit_anim.c img_set_up.c ft_texturingue.c move.c utils.c wall_anim.c ft_map_checker.c ft_map_maker.c line_ct.c so_long.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
+SRCS = ennemies.c baby_anim.c exit_anim.c img_set_up.c ft_texturingue.c move.c utils.c wall_anim.c check_bonus.c ft_map_maker.c line_ct.c so_long.c ./get_n_line/get_next_line.c ./get_n_line/get_next_line_utils.c
 
-INCL = so_long.h get_next_line/get_next_line.h minilibx_opengl_20191021/mlx.h
+INCL = so_long.h get_n_line/get_next_line.h minilibx_opengl_20191021/mlx.h
 
 MLXA = minilibx_opengl_20191021/libmlx.a
 

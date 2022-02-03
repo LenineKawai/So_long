@@ -6,7 +6,7 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:50:01 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/02/02 10:37:43 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/02 13:29:11 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_check_map_input(char **map)
 		while (map[i][j])
 		{
 			if ((map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C')
-				&& (map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != '\n'))
+				&& (map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != '\n' &&  map[i][j] != 'A'))
 			{
 				printf("Error, there is an intruder in the map file !\n");
 				exit (0);
@@ -86,10 +86,10 @@ int	ft_check_map_input(char **map)
 
 void	ft_check_amount(char **map, t_prg *prg)
 {
-	int i;
-	int j;
-	int ctE;
-	int ctP;
+	int		i;
+	int		j;
+	int		ctE;
+	int		ctP;
 
 	i = 0;
 	ctE = 0;

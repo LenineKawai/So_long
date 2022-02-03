@@ -6,7 +6,7 @@
 /*   By: mgolinva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:19:54 by mgolinva          #+#    #+#             */
-/*   Updated: 2022/02/01 14:24:01 by mgolinva         ###   ########lyon.fr   */
+/*   Updated: 2022/02/03 16:01:51 by mgolinva         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,9 @@ void	ft_anim_set_up(t_prg *prg)
 	prg->extA.i_ref = mlx_xpm_file_to_image(prg->mlx, EA, &w, &h);
 	prg->coA.i_ref = mlx_xpm_file_to_image(prg->mlx, CA1, &w, &h);
 	prg->coA2.i_ref = mlx_xpm_file_to_image(prg->mlx, CA2, &w, &h);
+	prg->blk1.i_ref = mlx_xpm_file_to_image(prg->mlx, BB1, &w, &h);
+	prg->blkr.i_ref = mlx_xpm_file_to_image(prg->mlx, BBR, &w, &h);
+	prg->blk2.i_ref = mlx_xpm_file_to_image(prg->mlx, BB2, &w, &h);
+	prg->blk3.i_ref = mlx_xpm_file_to_image(prg->mlx, BB3, &w, &h);
+	prg->los.i_ref = mlx_xpm_file_to_image(prg->mlx, L, &w, &h);
 }
